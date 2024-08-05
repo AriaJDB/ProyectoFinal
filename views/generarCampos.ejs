@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Generar campos</title>
+</head>
+<body>
+<div class="page">
+    <div class="container">
+        <div class="left">
+            <div class="login">Generar campos</div>
+            <div class="eula">Tabla "<%= nombreTabla %>"</div>
+        </div>
+        <div class="right">
+            <div class="form">
+                <form id="formGenerarCampos" action="/crearTabla" method="POST" onsubmit="prepareData()">
+                <input type="hidden" name="nombreTabla" value="<%= nombreTabla %>">
+                <input type="hidden" id="numeroCampos" value="<%= numeroCampos %>">
+                <input type="hidden" id="campos" name="campos">
+                <!-- Los campos se generarán aquí -->
+                <button type="submit">Crear Tabla</button>
+            </form>
+                <div class="mensajeNombreBase ocultar">Nombre inválido</div>
+                <i class="fa-solid fa-circle-check circleCheckNombreBase ocultar"></i>
+                <i class="fa-solid fa-circle-xmark circleCrossNombreBase ocultar"></i>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -149,9 +149,9 @@ router.post('/insertarRegistro', async (req, res) => {
     }
 });
 
-router.get('/modificarRegistroForm', (req, res) => {
+router.get('/modificarRegistro', (req, res) => {
     const { baseNombre, tablaNombre, ...datosRegistro } = req.query;
-    res.render('modificarRegistroForm', { baseNombre, tablaNombre, datosRegistro });
+    res.render('modificarRegistro', { baseNombre, tablaNombre, datosRegistro });
 });
 
 // Ruta para manejar la modificación de registros

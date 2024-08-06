@@ -1,31 +1,28 @@
 // Expresiones regulares para validación
-var regexNombre = /^[A-ZÁÉÍÓÚÑ'][a-záéíóúñ']{1,}([ ][A-ZÁÉÍÓÚÑ'][a-záéíóúñ']{1,}){0,}$/;
+var regexNombreBase = /^[A-Za-z0-9]+$/;
 
 // Obtener elementos del formulario
 var nombreBase = document.getElementById("nombreBase");
-var mensajeNombreBase = document.getElementsByClassName("mensajeNombreBase")[0];
-var circleCrossNombreBase = document.getElementsByClassName("circleCrossNombreBase")[0];
-var circleCheckNombreBase = document.getElementsByClassName("circleCheckNombreBase")[0];
+var mensajeNombreBaseCorrecto = document.getElementsByClassName("mensajeNombreBaseCorrecto")[0];
+var mensajeNombreBaseIncorrecto = document.getElementsByClassName("mensajeNombreBaseIncorrecto")[0];
 var enviarDatos = 1;
 var band = 0;
 
 // Validar nombre de la base de datos
 nombreBase.addEventListener("blur", () => {
-    if (!regexNombre.test(nombreBase.value)) {
+    if (!regexNombreBase.test(nombreBase.value)) {
         enviarDatos = 0;
-        mensajeNombreBase.classList.remove("ocultar");
+        mensajeNombreBaseCorrecto.classList.add("ocultar");
+        mensajeNombreBaseIncorrecto.classList.remove("ocultar");
         nombreBase.classList.add("error");
         nombreBase.classList.remove("correcto");
-        circleCrossNombreBase.classList.remove("ocultar");
-        circleCheckNombreBase.classList.add("ocultar");
     } else {
         band++;
         enviarDatos = 1;
-        mensajeNombreBase.classList.add("ocultar");
+        mensajeNombreBaseCorrecto.classList.remove("ocultar");
+        mensajeNombreBaseIncorrecto.classList.add("ocultar");
         nombreBase.classList.remove("error");
         nombreBase.classList.add("correcto");
-        circleCrossNombreBase.classList.add("ocultar");
-        circleCheckNombreBase.classList.remove("ocultar");
     }
 });
 

@@ -95,7 +95,7 @@
     }
     .left {
       background: white;
-      height: calc(100% - 40px);
+      height: calc(100% - 5px);
       top: 20px;
       position: relative;
       width: 50%;
@@ -125,6 +125,7 @@
       color: #2020c9;
       position: relative;
       width: 50%;
+      height: 360px;
     }
     @media (max-width: 767px) {
       .right {
@@ -363,18 +364,18 @@ button:active,.botonLink:active {
   background-color: rgb(209, 250, 127);
 }
 
-.mensajeNombreBaseIncorrecto, .mensajeNombreTablaIncorrecto, .mensajeNumeroCamposIncorrecto{
+.mensajeNombreBaseIncorrecto, .mensajeNombreTablaIncorrecto, .mensajeNumeroCamposIncorrecto, .mensajeCampoIncorrecto{
 color: red;
 font-size: small;
-margin-top: 10px;
-margin-bottom: 10px;
+margin-top: 5px;
+margin-bottom: 5px;
 }
 
-.mensajeNombreBaseCorrecto, .mensajeNombreTablaCorrecto, .mensajeNumeroCamposCorrecto{
+.mensajeNombreBaseCorrecto, .mensajeNombreTablaCorrecto, .mensajeNumeroCamposCorrecto, .mensajeCampoCorrecto{
 color: rgb(3, 85, 21);
 font-size: small;
-margin-top: 10px;
-margin-bottom: 10px;
+margin-top: 5px;
+margin-bottom: 5px;
 }
 
 .circleCheckNombreBase{

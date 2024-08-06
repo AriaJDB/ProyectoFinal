@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/insertarRegistro.js" defer></script>
     <title>Insertar Registro</title>
 </head>
 <body>
@@ -16,24 +17,22 @@
 
             <div class="right">
                 <div class="form">
-                    <form action="/insertarRegistro" method="POST">
+                    <form id="formularioInsertarRegistro" action="/insertarRegistro" method="POST">
                         <input type="hidden" name="baseNombre" value="<%= baseNombre %>">
                         <input type="hidden" name="tablaNombre" value="<%= tablaNombre %>">
                         <% columnas.forEach(columna => { %>
                             <label for="<%= columna %>"><%= columna %>:</label>
-                            <input type="text" id="<%= columna %>" name="<%= columna %>" required>
+                            <input type="text" id="<%= columna %>" name="<%= columna %>" class="campo" required>
+                            <div id="mensajeCampoIncorrecto_<%= columna %>" class="mensajeCampoIncorrecto ocultar">Valor inválido ✘</div>
+                            <div id="mensajeCampoCorrecto_<%= columna %>" class="mensajeCampoCorrecto ocultar">Valor validado ✔</div>
                             <br>
                         <% }) %>
                         <button type="submit">Insertar</button>
                         
-                    <a href="/verTablas?baseNombre=<%= baseNombre %>" class="botonLink">Volver a la tabla</a>
+                        <a href="/verTablas?baseNombre=<%= baseNombre %>" class="botonLink">Volver a la tabla</a>
                     </form>
                 </div>
             </div>
-        
-                
-
-            
         </div>
     </div>
 </body>

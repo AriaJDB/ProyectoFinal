@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/modificarRegistro.js" defer></script>
     <title>Modificar Registro</title>
 </head>
 <body>
@@ -16,22 +17,22 @@
             
             <div class="right">
                 <div class="form">
-                    <form action="/modificarRegistro" method="POST">
+                    <form id="formularioModificarRegistro" action="/modificarRegistro" method="POST">
                         <input type="hidden" name="baseNombre" value="<%= baseNombre %>">
                         <input type="hidden" name="tablaNombre" value="<%= tablaNombre %>">
                         <% for (let campo in datosRegistro) { %>
                             <div>
                                 <label for="<%= campo %>"><%= campo %></label>
-                                <input type="text" name="<%= campo %>" id="<%= campo %>" value="<%= datosRegistro[campo] %>" required>
+                                <input type="text" name="<%= campo %>" id="<%= campo %>" value="<%= datosRegistro[campo] %>" class="campo" required>
+                                <div id="mensajeCampoIncorrecto_<%= campo %>" class="mensajeCampoIncorrecto ocultar">Valor inválido ✘</div>
+                                <div id="mensajeCampoCorrecto_<%= campo %>" class="mensajeCampoCorrecto ocultar">Valor validado ✔</div>
                             </div>
                         <% } %>
                         <button type="submit">Modificar</button>
                         <a href="/verTablas?baseNombre=<%= baseNombre %>" class="botonLink">Volver atras</a>
                     </form>
                 </div>
-                
             </div>
-            
         </div>
     </div>
 </body>

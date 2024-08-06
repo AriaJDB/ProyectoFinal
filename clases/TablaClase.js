@@ -18,6 +18,17 @@ class Tabla{
             this.numeroCampos=numeroCampos;
         }
     };
+
+    set campo(campo){
+        var regexCampo = /^[A-Za-z0-9]+$/;
+        if (regexCampo.test(campo)){
+            this.campo=campo;
+        }
+    };
+    
+    get campo(){
+        return this._campo;
+    };
     
     get tablaNombre(){
         return this._tablaNombre;

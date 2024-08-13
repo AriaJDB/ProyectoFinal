@@ -1,4 +1,3 @@
-// Dentro de ConectarBD.js
 class ConectarBD {
     constructor(){
         this.conexion = null;
@@ -31,7 +30,7 @@ class ConectarBD {
             await this.conectarMySql();
             const [rows] = await this.conexion.query('SHOW DATABASES');
             await this.cerrarConexion();
-            return rows.map(row => row.Database); // Devuelve solo los nombres de las bases de datos
+            return rows.map(row => row.Database);
         } catch (error) {
             console.error('Error al listar bases de datos:', error);
             throw error;

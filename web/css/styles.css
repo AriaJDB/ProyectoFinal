@@ -1,4 +1,5 @@
 
+/*TODO ESTO ESTÁ MAL OPTIMIZADO, HAY MUCHO CÓDIGO*/
 /* Estilos menu*/
 *{
     font-family: Century Gothic;
@@ -196,11 +197,11 @@ thead {
 }
 
 th, td {
-    border: none; /* Elimina los bordes */
+    border: none; 
     padding: 5px;
     text-align: left;
     letter-spacing: 10px;
-   padding: 20px; /* Incrementar el padding */
+   padding: 20px; 
    border-bottom: 2px solid #dddd
 }
 
@@ -209,7 +210,7 @@ th {
     color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 18px; /* Incrementar el tamaño de la fuente */
+    font-size: 18px; 
 }
 
 tr:nth-child(even) {
@@ -217,22 +218,22 @@ tr:nth-child(even) {
 }
 
 td {
-    font-size: 16px; /* Incrementar el tamaño de la fuente */
+    font-size: 16px; 
     color: #666;
 }
 
 @media (max-width: 800px) {
     th, td {
-        padding: 30px; /* Ajustar el padding para pantallas pequeñas */
-        font-size: 16px; /* Ajustar el tamaño de la fuente para pantallas pequeñas */
+        padding: 30px; 
+        font-size: 16px; 
     }
 }
 
 .table-container {
   width: 100%;
-  max-width: 1150px; /* Incrementar el ancho máximo */
+  max-width: 1150px; 
   background: white;
-  padding: 40px; /* Incrementar el padding */
+  padding: 40px; 
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;

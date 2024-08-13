@@ -15,14 +15,6 @@ const listarBasesDeDatos = async () => {
     return rows.map(row => row.Database);
 };
 
-const listarTablas = async (baseNombre) => {
-    await conexion.conectarMySql();
-    await conexion.conexion.query(`USE \`${baseNombre}\``);
-    const [rows] = await conexion.conexion.query('SHOW TABLES');
-    await conexion.cerrarConexion();
-    return rows.map(row => row[`Tables_in_${baseNombre}`]);
-};
-
 const eliminarTabla = async (baseNombre, tablaNombre) => {
     await conexion.conectarMySql();
     await conexion.conexion.query(`USE \`${baseNombre}\``);
@@ -75,7 +67,6 @@ const crearTabla = async (baseNombre, tablaNombre, campos) => {
 module.exports = {
     crearBaseDeDatos,
     listarBasesDeDatos,
-    listarTablas,
     eliminarTabla,
     obtenerDetallesTabla,
     eliminarRegistro,

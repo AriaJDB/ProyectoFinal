@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const ConectarBD = require('../bd/ConectarBD'); // Importa la clase
-const conexion = new ConectarBD(); // Crea una instancia de la clase
+const ConectarBD = require('../bd/ConectarBD'); 
+const conexion = new ConectarBD(); 
 
 const { crearBaseDeDatos } = require('../bd/BaseBD');
 
@@ -40,10 +40,8 @@ router.get('/verTablas', async (req, res) => {
         await conexion.conectarMySql();
         await conexion.conexion.query(`USE \`${baseNombre}\``);
 
-        // Obtener las tablas de la base de datos
         const [tablas] = await conexion.conexion.query('SHOW TABLES');
-        
-        // Crear un objeto para almacenar las tablas y sus registros
+
         const tablasDetalles = await Promise.all(tablas.map(async (tablaObj) => {
             const tablaNombre = tablaObj[`Tables_in_${baseNombre}`];
             const [columnas] = await conexion.conexion.query(`SHOW COLUMNS FROM \`${tablaNombre}\``);
@@ -85,17 +83,14 @@ router.post('/eliminarRegistro', async (req, res) => {
         await conexion.conectarMySql();
         await conexion.conexion.query(`USE \`${baseNombre}\``);
 
-        // Construir la cláusula WHERE para la eliminación
         const whereClause = Object.keys(registro)
             .map(key => `\`${key}\` = ?`)
             .join(' AND ');
 
         const values = Object.values(registro);
 
-        // Construir la consulta SQL
         const sql = `DELETE FROM \`${tablaNombre}\` WHERE ${whereClause}`;
-        
-        // Ejecutar la consulta SQL
+
         await conexion.conexion.query(sql, values);
         await conexion.cerrarConexion();
 
@@ -112,8 +107,7 @@ router.get('/insertarRegistroForm', async (req, res) => {
     try {
         await conexion.conectarMySql();
         await conexion.conexion.query(`USE \`${baseNombre}\``);
-        
-        // Obtener las columnas de la tabla
+
         const [columnas] = await conexion.conexion.query(`SHOW COLUMNS FROM \`${tablaNombre}\``);
         
         const columnasNames = columnas.map(col => col.Field);
@@ -132,13 +126,11 @@ router.post('/insertarRegistro', async (req, res) => {
         await conexion.conectarMySql();
         await conexion.conexion.query(`USE \`${baseNombre}\``);
 
-        // Construir la consulta de inserción
         const columnas = Object.keys(registro);
         const valores = Object.values(registro);
         const placeholders = columnas.map(() => '?').join(', ');
         const sql = `INSERT INTO \`${tablaNombre}\` (${columnas.map(col => `\`${col}\``).join(', ')}) VALUES (${placeholders})`;
-        
-        // Ejecutar la consulta SQL
+
         await conexion.conexion.query(sql, valores);
         await conexion.cerrarConexion();
 
@@ -154,7 +146,7 @@ router.get('/modificarRegistro', (req, res) => {
     res.render('modificarRegistro', { baseNombre, tablaNombre, datosRegistro });
 });
 
-// Ruta para manejar la modificación de registros
+
 router.post('/modificarRegistro', async (req, res) => {
     const { baseNombre, tablaNombre, ...datosRegistro } = req.body;
     try {
@@ -201,7 +193,5 @@ router.post('/crearTabla', async (req, res) => {
         res.status(500).send('Error al crear la tabla');
     }
 });
-
-
 
 module.exports = router;
